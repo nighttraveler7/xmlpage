@@ -5,7 +5,6 @@ class Template {
 	public $page_name;
 	public $template_path;
 	public $raw_data;
-	public $parsed_data;
 
 	public static function vksprintf($str, $args) {
 		if (is_object($args)) {
@@ -35,12 +34,10 @@ class Template {
 		require_once($this->template_path);
 		$this->raw_data = ob_get_contents();
 		ob_end_clean();
-		
-		$this->parsed_data = self::vksprintf($this->raw_data, $args);
 	}
 
 	public function show_template() {
-		echo $this->parsed_data;
+		echo $this->raw_data;
 	}
 }
 ?>
