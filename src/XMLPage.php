@@ -15,7 +15,7 @@ class XMLPage {
 		return basename($_SERVER['SCRIPT_NAME'], '.php');
 	}
 
-	public function __construct($page_name) {
+	public function __construct($page_name, $args = array()) {
 		$this->xmlpages_path = $_SERVER['DOCUMENT_ROOT'] . self::XMLPAGES_PATH;
 		$this->page_name = $page_name;
 		$this->file_name = $this->xmlpages_path . '/' . $page_name . '.xml';
