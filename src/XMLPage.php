@@ -8,6 +8,7 @@ class XMLPage {
 	public $xmlpages_path;
 	protected $file_name;
 	public $text_content;
+	public $parsed_content;
 	public $xml_content;
 
 	public static function get_current_page_name() {
@@ -19,7 +20,8 @@ class XMLPage {
 		$this->page_name = $page_name;
 		$this->file_name = $this->xmlpages_path . '/' . $page_name . '.xml';
 		$this->text_content = file_get_contents($this->file_name);
-		$this->xml_content = new \SimpleXMLElement($this->text_content);
+		$this->parsed_content = Template::vksprintf($this->text_content, $args);
+		$this->xml_content = new \SimpleXMLElement($this->parsed_content);
 	}
 }
 ?>
